@@ -1,0 +1,8 @@
+.pagewrapper {
+  background-color: lightblue;
+  padding: 2rem;
+  margin: 2rem;
+}
+.widget-header {
+  @extend .pagewrapper;
+}

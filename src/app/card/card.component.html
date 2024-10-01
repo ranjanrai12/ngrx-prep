@@ -1,0 +1,41 @@
+<h1 *ngIf="parentValue">{{ parentValue }}</h1>
+<div class="flex gap-1 px-2">
+  @for (item of cardItems; track item.productId; let index = $index) {
+  <div class="w-[200px] flex flex-col bg-white border border-gray-300 rounded-md shadow-md">
+    <img
+      class="w-[200px] h-[200px]"
+      src="https://static2.cilory.com/189111-thickbox_default/no-logo-royal-blue-full-sleeves-henley-t-shirt.jpg"
+      alt="t-shirt"
+    />
+    <div class="bg-gray-200 flex flex-col px-2 pb-2">
+      <div class="flex justify-between">
+        <h1 class="font-semibold">{{ item.itemName }}</h1>
+        <h1 class="font-semibold">{{ item.price }}</h1>
+      </div>
+      <div>
+        <h1 class="text-md font-medium mb-1">colors</h1>
+
+        <ul class="flex list-none space-x-2">
+          @for (color of item.colors; track $index) {
+          <li class="h-4 w-4 rounded-full cursor-pointer" [ngStyle]="{ 'background-color': color }"></li>
+          }
+        </ul>
+      </div>
+      <div class="flex gap-2">
+        <button
+          class="block bg-blue-800 text-white text-center py-2 px-2 rounded-md text-sm font-semibold mt-2"
+          (click)="addProduct(item, index)"
+        >
+          add item
+        </button>
+        <button
+          class="block bg-red-500 text-white text-center py-2 px-2 rounded-md text-sm font-semibold mt-2"
+          (click)="removeProduct(item)"
+        >
+          delete item
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+</div>
